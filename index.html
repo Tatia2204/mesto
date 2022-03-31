@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./vendor/normalize.css">
+    <title>Место</title>
+</head>
+<body class="page">
+    <header class="header">
+        <img src="./img4/Vector.svg" alt="Лого" class="header__logo">
+        <div class="header__line"></div>
+    </header>
+
+    <main>
+        <section class="profile">
+            <img src="./img4/Avatar2.jpg" alt="фото" class="profile__avatar">
+            <ul class="profile__info">
+                <li><h1 class="profile__name">Жак-Ив Кусто</h1></li>
+                <li><button class="link profile__info-edit" type="button"></button></li>
+                <li><p class="profile__profession">Исследователь океана</p></li>
+            </ul>
+            <button class="link profile__info-add" type="button"></button>
+        </section>
+
+        <section class="elements">
+            <ul class="element">
+                <li><img src="./img4/abrauDurso.jpg" alt="озеро" class="element__mask-group"></li>
+                <li class="element__group">
+                    <h2 class="element__location">Озеро Абрау</h2>
+                    <img src="./img4/cuore1.svg" alt="лайк" class="element__like">
+                </li>
+            </ul>
+            <ul class="element">
+                <li><img src="./img4/kareliaKiji.jpg" alt="храм" class="element__mask-group"></li>
+                <li class="element__group">
+                    <h2 class="element__location">Республика Карелия</h2>
+                    <img src="./img4/cuore1.svg" alt="лайк" class="element__like">
+                </li>
+            </ul>
+            <ul class="element">
+                <li><img src="./img4/palaceKhan.jpg" alt="дворец" class="element__mask-group"></li>
+                <li class="element__group">
+                    <h2 class="element__location">Бахчисарай</h2>
+                    <img src="./img4/cuore1.svg" alt="лайк" class="element__like">
+                </li>
+            </ul>
+            <ul class="element">
+                <li><img src="./img4/russkyIsl.jpg" alt="остров" class="element__mask-group"></li>
+                <li class="element__group">
+                    <h2 class="element__location">Остров Русский</h2>
+                    <img src="./img4/cuore1.svg" alt="лайк" class="element__like">
+                </li>
+            </ul>
+            <ul class="element">
+                <li><img src="./img4/sevastopolM.jpg" alt="маяк" class="element__mask-group"></li>
+                <li class="element__group">
+                    <h2 class="element__location">Севастополь</h2>
+                    <img src="./img4/cuore1.svg" alt="лайк" class="element__like">
+                </li>
+            </ul>
+            <ul class="element">
+                <li><img src="./img4/sheregesh.jpg" alt="горы" class="element__mask-group"></li>
+                <li class="element__group">
+                    <h2 class="element__location">Шерегеш</h2>
+                    <img src="./img4/cuore1.svg" alt="лайк" class="element__like">
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer">&copy;2022. Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+        <div class="popup__form">
+            <form class="popup__content">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input type="text" class="popup__name">
+                <div class="popup__line"></div>
+                <input type="text" class="popup__profession">
+                <div class="popup__line"></div>
+                <button class="popup__save popup__text" type="submit">Сохранить</button>
+            </form>
+            <button class="link popup__close" type="button"></button>
+        </div>
+    </div>
+
+    <script src="scripts/script2.js"></script>
+</body>
+</html>

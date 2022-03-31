@@ -1,0 +1,24 @@
+.element__mask-group {
+    max-width: 100%;
+    min-height: 282px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+@media screen and (max-width: 1275px) {
+    .element__mask-group {
+        min-height: 431px;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .element__mask-group {
+        min-height: 350px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .element__mask-group {
+        min-height: 282px;
+    }
+}
