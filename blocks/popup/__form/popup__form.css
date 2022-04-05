@@ -1,5 +1,5 @@
 .popup__form {
-    max-width: 470px;
+    min-width: 33%;
     display: grid;
     grid-template-columns: 93% 7%;
     grid-template-rows: 9% 91%;
@@ -8,22 +8,27 @@
         "content .";
     row-gap: 8px;
     column-gap: 8px;
+    position: absolute;
+    top: 19%;
+    left: 33%;
 }
 
 @media screen and (max-width: 960px) {
     .popup__form {
-        max-width: 88%;
-        margin: 92px auto;
+        min-width: 47%;
         row-gap: 16px;
         grid-template-areas:
         ". close"
         "content content";
         column-gap: 0;
+        top: 12%;
+        left: 26%;
     }
 }
 
 @media screen and (max-width: 610px) {
     .popup__form {
-        margin: 0;
+        left: 3.5%;
+        min-width: 93%;
     }
 }
