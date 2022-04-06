@@ -2,12 +2,9 @@
     width: 24px;
     height: 19px;
     margin-top: 6px;
-    background-image: url("../../../images/cuore1.svg");
-    background-repeat: no-repeat;
+    background: transparent url("../../../images/cuore1.svg") no-repeat center;
     background-size: 22px 19px;
-    background-position: center;
     border: none;
-    background-color: #FFFFFF;
     cursor: pointer;
 }
 
