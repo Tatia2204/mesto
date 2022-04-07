@@ -1,5 +1,5 @@
 .popup__form {
-    min-width: 33%;
+    max-width: 470px;
     display: grid;
     grid-template-columns: 93% 7%;
     grid-template-rows: 9% 91%;

@@ -9,7 +9,6 @@ const myForm = document.querySelector('.popup__content');
 
 function openModalWindow() {
     modalWindow.classList.add('popup_opened');
-    modalWindow.classList.add('popup_center-form');
     nameInput.value = profileNameLink.textContent;
     professionInput.value = profileProfessionLink.textContent;
 }
@@ -17,7 +16,6 @@ aboutProjectLink.addEventListener('click', openModalWindow);
 
 function closeModalWindow() {
     modalWindow.classList.remove('popup_opened');
-    modalWindow.classList.remove('popup_center-form');
 }
 
 modalClose.addEventListener('click', closeModalWindow);
