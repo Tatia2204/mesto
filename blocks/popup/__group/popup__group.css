@@ -1,0 +1,13 @@
+.popup__group {
+    max-width: 856px;
+    min-width: 470px;
+    display: grid;
+    grid-template-columns: 93% 7%;
+    grid-template-rows: 9% 91%;
+    grid-template-areas:
+        ". close"
+        "content .";
+    row-gap: 8px;
+    column-gap: 8px;
+
+}
