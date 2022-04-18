@@ -50,6 +50,11 @@ const linkValue = document.querySelector('.popup__element_add_link');
 
 const modalMaskGroup = document.querySelector('.popup_mask-group');
 
+const locationName = document.querySelector('.popup__location-name');
+const locationImage = document.querySelector('.popup__mask-image');
+
+const imageClose = document.querySelector('.popup__close_image');
+
 function render() {
     const html = initialCards.map(getElement);
     listContainer.append(...html);
@@ -62,19 +67,27 @@ function getElement(item) {
     const removeButton = getElementTemplate.querySelector('.element__remove');
     const like = getElementTemplate.querySelector('.element__like');
 
+
     name.textContent = item.name;
     link.src = item.link;
 
     removeButton.addEventListener('click', removeButtonElement);
     like.addEventListener('click', addLikeElement);
     link.addEventListener('click', openAddMaskGroup);
+    imageClose.addEventListener('click', closeAddMaskGroup);
+
     function openAddMaskGroup() {
         modalMaskGroup.classList.add('popup_opened');
-        modalLocation.value = name.textContent;
-        modalMaskGroup.src = link.src;
+        locationName.textContent = name.textContent;
+        locationImage.src = link.src;
     }
 
+
     return getElementTemplate;
+}
+
+function closeAddMaskGroup() {
+    modalMaskGroup.classList.remove('popup_opened');
 }
 
 function addLikeElement(e) {
@@ -85,12 +98,6 @@ function addLikeElement(e) {
 function removeButtonElement(e) {
     const element = e.target.closest('.element');
     element.remove();
-}
-
-function openAddMaskGroup() {
-    modalMaskGroup.classList.add('popup_opened');
-    modalLocation.value = elementLocationLink.textContent;
-    modalMaskGroup.src = maskGroupInput.src;
 }
 
 function openAddLocation(e) {
@@ -104,9 +111,6 @@ function closeAddLocation() {
 }
 
 addClose.addEventListener('click', closeAddLocation);
-
-// link.addEventListener('click', openAddMaskGroup);
-
 
 function whenSubmit(e) {
     e.preventDefault();
