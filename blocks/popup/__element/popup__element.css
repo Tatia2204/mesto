@@ -13,8 +13,9 @@
 }
 
 @media screen and (max-width: 960px) {
-    .popup__name {
-        max-width: 238px;
-        margin: 0 22px 13px;
+    .popup__element {
+        width: 84%;
+        margin-right: 22px;
+        margin-left: 22px;
     }
 }

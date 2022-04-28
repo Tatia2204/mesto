@@ -34,11 +34,27 @@
 <div class="popup popup_profile">
     <div class="popup__form">
         <button aria-label="Закрыть окно" class="link popup__close popup__close_profile" type="button"></button>
-        <form name="myForm" class="popup__content">
+        <form name="myForm" novalidate class="popup__content popup__content_profile">
             <h3 class="popup__title">Редактировать профиль</h3>
-            <input placeholder="Имя" name="profileName" type="text" class="popup__element popup__element_add_name">
-            <input placeholder="Профессия" name="profileProfession" type="text" class="popup__element popup__element_add_profession">
-            <button class="popup__save" type="submit">Сохранить</button>
+            <input type="text"
+                   id="profileName-input"
+                   required
+                   minlength="2"
+                   maxlength="40"
+                   placeholder="Имя"
+                   name="profileName"
+                   class="popup__element popup__element_profile popup__element_add_name">
+            <span class="popup__name_error" id="profileName-input-error"></span>
+            <input type="text"
+                   id="profileProfession-input"
+                   required
+                   minlength="2"
+                   maxlength="200"
+                   placeholder="Профессия"
+                   name="profileProfession"
+                   class="popup__element popup__element_profile popup__element_add_profession">
+            <span class="popup__profession_error" id="profileProfession-error"></span>
+            <button class="popup__save popup__save_profile" type="submit">Сохранить</button>
         </form>
     </div>
 </div>
@@ -46,11 +62,25 @@
 <div class="popup popup_location">
     <div class="popup__form">
         <button aria-label="Закрыть окно" class="link popup__close popup__close_location" type="button"></button>
-        <form name="myForm" class="popup__content popup__content_location">
+        <form name="myForm" novalidate class="popup__content popup__content_location">
             <h3 class="popup__title">Новое место</h3>
-            <input placeholder="Название" name="locationName" type="text" class="popup__element popup__element_add_heading">
-            <input placeholder="Ссылка на картинку" name="locationLink" type="url" class="popup__element popup__element_add_link">
-            <button class="popup__save" type="submit">Создать</button>
+            <input type="text"
+                   id="name-input"
+                   required
+                   minlength="2"
+                   maxlength="30"
+                   placeholder="Название"
+                   name="locationName"
+                   class="popup__element popup__element_add_heading">
+            <span class="popup__error" id="name-input-error"></span>
+            <input type="url"
+                   id="link-input"
+                   required
+                   placeholder="Ссылка на картинку"
+                   name="locationLink"
+                   class="popup__element popup__element_add_link">
+            <span class="popup__error" id="link-input-error"></span>
+            <button class="popup__save popup__save_location" type="submit">Создать</button>
         </form>
     </div>
 </div>
@@ -76,6 +106,7 @@
     </article>
 </template>
 
+<script src="scripts/validate.js"></script>
 <script src="scripts/cards.js"></script>
 <script src="scripts/script.js"></script>
 </body>
