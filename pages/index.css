@@ -20,10 +20,10 @@
 @import url(../blocks/popup/__content-group/popup__content-group.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__element/popup__element.css);
-@import url(../blocks/popup/__element/_error_active/popup__element_error_active.css);
 @import url(../blocks/popup/__element/_type_error/popup__element_type_error.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__group/popup__group.css);
+@import url(../blocks/popup/__indent/popup__indent.css);
 @import url(../blocks/popup/__location-name/popup__location-name.css);
 @import url(../blocks/popup/__mask-image/popup__mask-image.css);
 @import url(../blocks/popup/__save/popup__save.css);

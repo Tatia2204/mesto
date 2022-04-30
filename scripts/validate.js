@@ -7,7 +7,7 @@ function enableValidation(config) {
     })
 
     form.addEventListener('submit', (event) => handleFormSubmit(event, form));
-    // form.addEventListener('input', (event) => handleFormInput(event));
+
     toggleButton(form, config);
 }
 
@@ -15,17 +15,11 @@ function toggleButton(form, config) {
     const button = document.querySelector(config.buttonSelector);
     button.disabled = !form.checkValidity();
 
-    button.classList.toggle('popup__save_type_disabled', !form.checkValidity());
+    button.classList.toggle(config.inactiveButtonClass, !form.checkValidity());
 }
 
 function handleFormSubmit(event, form) {
     event.preventDefault();
-
-    if (form.checkValidity()) {
-        alert('Форма валидна');
-    } else {
-        alert('Форма не валидна');
-    }
 }
 
 function handleFormInput(event, form, config) {
@@ -34,20 +28,33 @@ function handleFormInput(event, form, config) {
 
     if (input.validity.valid) {
         errorNode.textContent = ' ';
+        hideInputError(input);
     } else {
         errorNode.textContent = input.validationMessage;
+        showInputError(input);
     }
     toggleButton(form, config);
 }
+
+
+const showInputError = (element) => {
+    element.classList.add('popup__element_type_error');
+};
+
+const hideInputError = (element) => {
+    element.classList.remove('popup__element_type_error');
+};
 
 enableValidation({
     formSelector: '.popup__content_profile',
     inputSelector: '.popup__element_profile',
     buttonSelector: '.popup__save_profile',
+    inactiveButtonClass: 'popup__save_type_disabled',
 });
 
 enableValidation({
     formSelector: '.popup__content_location',
-    inputSelector: '.popup__element',
+    inputSelector: '.popup__element_location',
     buttonSelector: '.popup__save_location',
+    inactiveButtonClass: 'popup__save_type_disabled',
 });

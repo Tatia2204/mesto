@@ -3,19 +3,10 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
-    margin: 0 auto 30px;
+    width: 100%;
     border: none;
-    width: 83%;
     padding: 0 0 13px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: rgba(0, 0, 0, 0.2);
-}
-
-@media screen and (max-width: 960px) {
-    .popup__element {
-        width: 84%;
-        margin-right: 22px;
-        margin-left: 22px;
-    }
 }

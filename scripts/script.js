@@ -43,13 +43,23 @@ function getElement(item) {
     removeButton.addEventListener('click', removeButtonElement);
     like.addEventListener('click', addLikeElement);
     link.addEventListener('click', openAddMaskGroup);
-
+    document.addEventListener('keydown', openEnter);
 
     function openAddMaskGroup() {
         openPopup(modalMaskGroup);
+        AddMaskGroup();
+    }
+
+    function AddMaskGroup() {
         locationName.textContent = name.textContent;
         locationImage.src = link.src;
         locationImage.alt = link.alt;
+    }
+
+    function openEnter(event) {
+        if (event.keyCode === "Enter") {
+            AddMaskGroup();
+        }
     }
 
     return getElementTemplate;
@@ -116,6 +126,32 @@ function closeModalWindow() {
 
 modalProfileClose.addEventListener('click', closeModalWindow);
 
+function closeOverlayClick(event) {
+    if (event.target === event.currentTarget) {
+        closePopup(modalWindow);
+        closePopup(modalLocation);
+        closePopup(modalMaskGroup);
+    }
+}
+
+modalWindow.addEventListener('click', closeOverlayClick);
+modalLocation.addEventListener('click', closeOverlayClick);
+modalMaskGroup.addEventListener('click', closeOverlayClick);
+
+function closeEscape(event) {
+    if (event.keyCode === 27) {
+        closePopup(modalWindow);
+        closePopup(modalLocation);
+        closePopup(modalMaskGroup);
+    }
+}
+
+document.addEventListener('keydown', closeEscape);
+modalWindow.removeEventListener('keydown', closeEscape);
+modalLocation.removeEventListener('keydown', closeEscape);
+modalMaskGroup.removeEventListener('keydown', closeEscape);
+
+
 function handleProfileFormSubmit(e) {
     e.preventDefault();
     profileNameLink.textContent = nameProfileInput.value;
@@ -124,6 +160,7 @@ function handleProfileFormSubmit(e) {
 }
 
 formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
+
 
 
 
