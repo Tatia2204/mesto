@@ -1,6 +1,10 @@
+import {FormValidator} from './FormValidator.js';
+import {Card} from './Card.js';
+import {initialCards} from './utils.js';
+
 const aboutProjectLink = document.querySelector('.profile__info-edit');
-const modalProfile = document.querySelector('.popup_profile');                                                                                                           _profile');
-const modalProfileClose = document.querySelector('.popup__close_profile');
+const modalProfile = document.querySelector('.popup_profile');
+const modalProfileClose = modalProfile.querySelector('.popup__close_profile');
 const nameProfileInput = document.querySelector('.popup__element_add_name');
 const profileNameLink = document.querySelector('.profile__name');
 const professionProfileInput = document.querySelector('.popup__element_add_profession');
@@ -8,7 +12,6 @@ const profileProfessionLink = document.querySelector('.profile__profession');
 const formProfileEdit = document.querySelector('.popup__content');
 
 const listContainer = document.querySelector('.elements');
-const template = document.querySelector('.template');
 
 const addButton = document.querySelector('.profile__info-add');
 const modalLocation = document.querySelector('.popup_location');
@@ -17,54 +20,21 @@ const addCardLocation = document.querySelector('.popup__content_location');
 const headingCardValue = document.querySelector('.popup__element_add_heading');
 const linkCardValue = document.querySelector('.popup__element_add_link');
 
-const modalPictures = document.querySelector('.popup_mask-group');
-
-const locationName = document.querySelector('.popup__location-name');
-const locationImage = document.querySelector('.popup__mask-image');
-
-const viewImageClose = document.querySelector('.popup__close_image');
-
 const numberEscape = 27;
 
-function render() {
-    const cards = initialCards.map(createСard);
-    listContainer.append(...cards);
+const createCard = (data) => {
+    const card = new Card(data, '.template');
+    return card.generateCard();
 }
 
-function createСard(element) {
-    const createСardTemplate = template.content.cloneNode(true);
-    const name = createСardTemplate.querySelector('.element__location');
-    const link = createСardTemplate.querySelector('.element__mask-group');
-    const removeButton = createСardTemplate.querySelector('.element__remove');
-    const like = createСardTemplate.querySelector('.element__like');
+const renderCard = (data) => {
+    const card = createCard(data);
 
-    name.textContent = element.name;
-    link.src = element.link;
-    link.alt = element.name;
+};
 
-    removeButton.addEventListener('click', removeButtonElement);
-    like.addEventListener('click', addLikeElement);
-    link.addEventListener('click', openAddMaskGroup);
-
-    function openAddMaskGroup() {
-        openPopup(modalPictures);
-
-        locationName.textContent = name.textContent;
-        locationImage.src = link.src;
-        locationImage.alt = link.alt;
-    }
-
-    return createСardTemplate;
-}
-
-function addLikeElement(e) {
-    e.target.classList.toggle('element__like_active');
-}
-
-function removeButtonElement(e) {
-    const element = e.target.closest('.element');
-    element.remove();
-}
+initialCards.forEach((data) => {
+    renderCard(data, listContainer);
+});
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -78,7 +48,7 @@ function closePopup(popup) {
 
 function handleAddCardFormSubmit(e) {
     e.preventDefault();
-    const fieldValue = createСard({name: headingCardValue.value, link: linkCardValue.value});
+    const fieldValue = createCard({name: headingCardValue.value, link: linkCardValue.value});
     listContainer.prepend(fieldValue);
 
     closePopup(modalLocation);
@@ -86,8 +56,6 @@ function handleAddCardFormSubmit(e) {
 }
 
 addCardLocation.addEventListener('submit', handleAddCardFormSubmit);
-
-render();
 
 function openModalProfile() {
     openPopup(modalProfile);
@@ -107,7 +75,6 @@ function closeOverlayClick(event) {
 
 modalProfile.addEventListener('click', closeOverlayClick);
 modalLocation.addEventListener('click', closeOverlayClick);
-modalPictures.addEventListener('click', closeOverlayClick);
 
 function closeEscape(event) {
     if (event.keyCode === numberEscape) {
@@ -125,6 +92,26 @@ function handleProfileFormSubmit(e) {
 
 formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
 
-viewImageClose.addEventListener('click', () => closePopup(modalPictures));
 addButton.addEventListener('click', () => openPopup(modalLocation));
 addCardClose.addEventListener('click', () => closePopup(modalLocation));
+
+const name = {
+    formSelector: '.popup__content',
+    inputSelector: '.popup__element',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_type_disabled',
+    inputErrorClass: 'popup__element_type_error'
+};
+
+const formProfileValidator = new FormValidator (name, modalProfile);
+formProfileValidator.enableValidation();
+
+const formLocationValidator = new FormValidator (name, modalLocation);
+formLocationValidator.enableValidation();
+
+initialCards.forEach((item) => {
+    const card = new Card(item, '.template');
+    const cardElement = card.generateCard();
+
+    document.querySelector('.elements').append(cardElement);
+});
