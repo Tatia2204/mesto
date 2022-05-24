@@ -115,6 +115,3 @@ initialCards.forEach((item) => {
 
     document.querySelector('.elements').append(cardElement);
 });
-
-
-
