@@ -1,6 +1,6 @@
 const aboutProjectLink = document.querySelector('.profile__info-edit');
-const modalProfile = document.querySelector('.popup_profile');
-const modalProfileClose = modalProfile.querySelector('.popup__close_profile');
+const modalProfile = document.querySelector('.popup_profile');                                                                                                           _profile');
+const modalProfileClose = document.querySelector('.popup__close_profile');
 const nameProfileInput = document.querySelector('.popup__element_add_name');
 const profileNameLink = document.querySelector('.profile__name');
 const professionProfileInput = document.querySelector('.popup__element_add_profession');
