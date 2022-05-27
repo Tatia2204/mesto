@@ -82,8 +82,6 @@ addCardClose.addEventListener('click', () => closePopup(modalLocation));
 
 const validationConfig = {
     formSelector: '.popup__content',
-    // formSelectorProfile: '.popup__content_profile',
-    // formSelectorLocation: '.popup__content_location',
     inputSelector: '.popup__element',
     submitButtonSelector: '.popup__save',
     inactiveButtonClass: 'popup__save_type_disabled',
