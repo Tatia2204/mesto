@@ -34,7 +34,7 @@
 <div class="popup popup_profile">
     <div class="popup__form">
         <button aria-label="Закрыть окно" class="link popup__close popup__close_profile" type="button"></button>
-        <form name="myForm" novalidate class="popup__content popup__content_profile">
+        <form name="formProfile" novalidate class="popup__content popup__content_profile">
             <h3 class="popup__title">Редактировать профиль</h3>
             <lebel class="popup__indent">
                 <input type="text"
@@ -66,7 +66,7 @@
 <div class="popup popup_location">
     <div class="popup__form">
         <button aria-label="Закрыть окно" class="link popup__close popup__close_location" type="button"></button>
-        <form name="myForm" novalidate class="popup__content popup__content_location">
+        <form name="formLocation" novalidate class="popup__content popup__content_location">
             <h3 class="popup__title">Новое место</h3>
             <lebel class="popup__indent">
                 <input type="text"
@@ -96,8 +96,8 @@
 <div class="popup popup_mask-group">
     <div class="popup__group">
         <button aria-label="Закрыть окно" class="link popup__close popup__close_image" type="button"></button>
-        <form name="myForm" class="popup__content-group">
-            <img src="-" alt="-" class="popup__mask-image">
+        <form name="formImage" class="popup__content-group">
+            <img src="#" alt="#" class="popup__mask-image">
             <h2 class="popup__location-name"></h2>
         </form>
     </div>
@@ -114,9 +114,6 @@
     </article>
 </template>
 
-<script type="module" src="scripts/Card.js"></script>
-<script type="module" src="scripts/utils.js"></script>
-<script type="module" src="scripts/scriprt.js"></script>
-<script type="module" src="scripts/FormValidator.js"></script>
+<script type="module" src="scripts/script.js"></script>
 </body>
 </html>

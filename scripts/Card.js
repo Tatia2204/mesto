@@ -1,5 +1,5 @@
-import {openPopup, closePopup,  modalPictures, locationImage,
-    viewImageClose, locationName, closeOverlayClick} from './utils.js';
+import {openPopup, modalPictures, locationImage,
+    locationName} from './utils.js';
 
 class Card {
     constructor(data, cardSelector) {
@@ -39,6 +39,7 @@ class Card {
 
     _removeButtonPicture = () => {
         this._element.remove();
+        this._element = null;
     }
 
     _addLikePicture = () => {
@@ -52,24 +53,11 @@ class Card {
         openPopup(modalPictures);
     }
 
-    _handleClosePicture = () => {
-        locationImage.src = '';
-        locationName.textContent = '';
-        locationImage.alt = '';
-        closePopup(modalPictures);
-    }
-
     _setEventListeners = () => {
         this._image = this._element.querySelector('.element__mask-group');
         this._image.addEventListener('click', () => {
             this._handlePreviewPicture();
         });
-
-        viewImageClose.addEventListener('click', () => {
-            this._handleClosePicture();
-        });
-
-        modalPictures.addEventListener('click', closeOverlayClick);
     }
 }
 

@@ -27,18 +27,18 @@ const initialCards = [
 
 const modalPictures = document.querySelector('.popup_mask-group');
 const locationImage = document.querySelector('.popup__mask-image');
-const viewImageClose = document.querySelector('.popup__close_image');
+
 const locationName = document.querySelector('.popup__location-name');
 
 const numberEscape = 27;
 
-function openPopup(modalPictures) {
-    modalPictures.classList.add('popup_opened');
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
     document.addEventListener('keydown', closeEscape);
 }
 
-function closePopup(modalPictures) {
-    modalPictures.classList.remove('popup_opened');
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', closeEscape);
 }
 
@@ -49,12 +49,4 @@ function closeEscape(event) {
     }
 }
 
-function closeOverlayClick(event) {
-    if (event.target === event.currentTarget) {
-        const popupActive = document.querySelector('.popup_opened');
-        closePopup(popupActive);
-    }
-}
-
-
-export {initialCards, openPopup, closePopup, modalPictures, locationImage, viewImageClose, locationName, closeOverlayClick};
+export {initialCards, openPopup, modalPictures, locationImage, locationName, closePopup};

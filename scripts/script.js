@@ -1,6 +1,6 @@
 import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
-import {initialCards} from './utils.js';
+import {initialCards, modalPictures, openPopup, closePopup} from './utils.js';
 
 const aboutProjectLink = document.querySelector('.profile__info-edit');
 const modalProfile = document.querySelector('.popup_profile');
@@ -20,7 +20,7 @@ const addCardLocation = document.querySelector('.popup__content_location');
 const headingCardValue = document.querySelector('.popup__element_add_heading');
 const linkCardValue = document.querySelector('.popup__element_add_link');
 
-const numberEscape = 27;
+const viewImageClose = document.querySelector('.popup__close_image'); //
 
 const createCard = (data) => {
     const card = new Card(data, '.template');
@@ -35,16 +35,6 @@ const renderCard = (data) => {
 initialCards.forEach((data) => {
     renderCard(data, listContainer);
 });
-
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closeEscape);
-}
-
-function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeEscape);
-}
 
 function handleAddCardFormSubmit(e) {
     e.preventDefault();
@@ -75,13 +65,7 @@ function closeOverlayClick(event) {
 
 modalProfile.addEventListener('click', closeOverlayClick);
 modalLocation.addEventListener('click', closeOverlayClick);
-
-function closeEscape(event) {
-    if (event.keyCode === numberEscape) {
-        const popupActive = document.querySelector('.popup_opened');
-        closePopup(popupActive);
-    }
-}
+modalPictures.addEventListener('click', closeOverlayClick);
 
 function handleProfileFormSubmit(e) {
     e.preventDefault();
@@ -92,26 +76,26 @@ function handleProfileFormSubmit(e) {
 
 formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
 
+viewImageClose.addEventListener('click', () => closePopup(modalPictures));
 addButton.addEventListener('click', () => openPopup(modalLocation));
 addCardClose.addEventListener('click', () => closePopup(modalLocation));
 
-const name = {
+const validationConfig = {
     formSelector: '.popup__content',
+    // formSelectorProfile: '.popup__content_profile',
+    // formSelectorLocation: '.popup__content_location',
     inputSelector: '.popup__element',
     submitButtonSelector: '.popup__save',
     inactiveButtonClass: 'popup__save_type_disabled',
     inputErrorClass: 'popup__element_type_error'
 };
 
-const formProfileValidator = new FormValidator (name, modalProfile);
+const formProfileValidator = new FormValidator (validationConfig, modalProfile);
 formProfileValidator.enableValidation();
 
-const formLocationValidator = new FormValidator (name, modalLocation);
+const formLocationValidator = new FormValidator (validationConfig, modalLocation);
 formLocationValidator.enableValidation();
 
-initialCards.forEach((item) => {
-    const card = new Card(item, '.template');
-    const cardElement = card.generateCard();
-
-    document.querySelector('.elements').append(cardElement);
+initialCards.forEach((data) => {
+    listContainer.append(createCard(data));
 });
