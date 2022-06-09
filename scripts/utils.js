@@ -27,26 +27,29 @@ const initialCards = [
 
 const modalPictures = document.querySelector('.popup_mask-group');
 const locationImage = document.querySelector('.popup__mask-image');
-
 const locationName = document.querySelector('.popup__location-name');
 
-const numberEscape = 27;
+const aboutProjectLink = document.querySelector('.profile__info-edit');
+const profileNameLink = document.querySelector('.profile__name');
+const profileProfessionLink = document.querySelector('.profile__profession');
+const addButton = document.querySelector('.profile__info-add');
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closeEscape);
-}
+const modalProfile = document.querySelector('.popup_profile');
+const formProfileButton = document.querySelector('.popup__save_profile');
+const formProfile = modalProfile.querySelector('[name="formProfile"]');
+const nameProfileInput = formProfile.querySelector('[name="profileName"]');
+const professionProfileInput = formProfile.querySelector('[name="profileProfession"]');
 
-function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeEscape);
-}
+const formProfileEdit = document.querySelector('.popup__content');
 
-function closeEscape(event) {
-    if (event.keyCode === numberEscape) {
-        const popupActive = document.querySelector('.popup_opened');
-        closePopup(popupActive);
-    }
-}
+const listContainer = document.querySelector('.elements');
 
-export {initialCards, openPopup, modalPictures, locationImage, locationName, closePopup};
+const modalLocation = document.querySelector('.popup_location');
+const addCardLocation = document.querySelector('.popup__content_location');
+const headingCardValue = document.querySelector('.popup__element_add_heading');
+const linkCardValue = document.querySelector('.popup__element_add_link');
+
+export {initialCards, modalPictures, locationImage, locationName, aboutProjectLink,
+    modalProfile, profileNameLink, professionProfileInput, profileProfessionLink,
+    formProfileEdit, listContainer, addButton, modalLocation, addCardLocation, headingCardValue,
+    linkCardValue, formProfileButton, nameProfileInput, formProfile};

@@ -1,11 +1,9 @@
-import {openPopup, modalPictures, locationImage,
-    locationName} from './utils.js';
-
 class Card {
-    constructor(data, cardSelector) {
+    constructor({data, handleCardClick}, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate = () => {
@@ -46,19 +44,13 @@ class Card {
         this._likePicture.classList.toggle('element__like_active');
     }
 
-    _handlePreviewPicture = () => {
-        locationImage.src = this._link;
-        locationName.textContent = this._name;
-        locationImage.alt = this._name;
-        openPopup(modalPictures);
-    }
-
     _setEventListeners = () => {
         this._image = this._element.querySelector('.element__mask-group');
+
         this._image.addEventListener('click', () => {
-            this._handlePreviewPicture();
+            this._handleCardClick(this._name, this._link);
         });
-    }
+     }
 }
 
 export {Card};
