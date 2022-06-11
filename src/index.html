@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+
     <title>Место</title>
 </head>
 <body class="page">
 <header class="header">
-    <img src="./images/Vector.svg" alt="Лого" class="header__logo">
+    <img src="<%=require('./images/Vector.svg')%>" alt="Лого" class="header__logo">
 </header>
 
 <main class="content">
     <section class="profile">
-        <img src="./images/Avatar2.jpg" alt="фото" class="profile__avatar">
+        <img src="<%=require('./images/Avatar2.jpg')%>" alt="фото" class="profile__avatar">
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button aria-label="Перейти к изменению профеля" class="link profile__info-edit" type="button"></button>
@@ -75,7 +75,7 @@
                        minlength="2"
                        maxlength="30"
                        placeholder="Название"
-                       name="locationName"
+                       name="name"
                        class="popup__element popup__element_location popup__element_add_heading">
                 <span class="popup__error" id="name-input-error"></span>
             </lebel>
@@ -84,7 +84,7 @@
                        id="link-input"
                        required
                        placeholder="Ссылка на картинку"
-                       name="locationLink"
+                       name="link"
                        class="popup__element popup__element_location popup__element_add_link">
                 <span class="popup__error" id="link-input-error"></span>
             </lebel>
@@ -113,9 +113,6 @@
         </div>
     </article>
 </template>
-
-<script type="module" src="scripts/script.js"></script>
-
 
 </body>
 </html>

@@ -6,7 +6,7 @@ class Section {
     }
 
     addItem = (data) => {
-        this._cardSelector.append(data);
+        this._cardSelector.prepend(data);
     }
 
     renderItems = () => {

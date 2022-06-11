@@ -26,30 +26,19 @@ const initialCards = [
 ];
 
 const modalPictures = document.querySelector('.popup_mask-group');
-const locationImage = document.querySelector('.popup__mask-image');
-const locationName = document.querySelector('.popup__location-name');
 
 const aboutProjectLink = document.querySelector('.profile__info-edit');
-const profileNameLink = document.querySelector('.profile__name');
-const profileProfessionLink = document.querySelector('.profile__profession');
 const addButton = document.querySelector('.profile__info-add');
 
 const modalProfile = document.querySelector('.popup_profile');
-const formProfileButton = document.querySelector('.popup__save_profile');
 const formProfile = modalProfile.querySelector('[name="formProfile"]');
 const nameProfileInput = formProfile.querySelector('[name="profileName"]');
 const professionProfileInput = formProfile.querySelector('[name="profileProfession"]');
 
-const formProfileEdit = document.querySelector('.popup__content');
-
 const listContainer = document.querySelector('.elements');
 
 const modalLocation = document.querySelector('.popup_location');
-const addCardLocation = document.querySelector('.popup__content_location');
-const headingCardValue = document.querySelector('.popup__element_add_heading');
-const linkCardValue = document.querySelector('.popup__element_add_link');
 
-export {initialCards, modalPictures, locationImage, locationName, aboutProjectLink,
-    modalProfile, profileNameLink, professionProfileInput, profileProfessionLink,
-    formProfileEdit, listContainer, addButton, modalLocation, addCardLocation, headingCardValue,
-    linkCardValue, formProfileButton, nameProfileInput, formProfile};
+export {initialCards, modalPictures, aboutProjectLink, modalProfile,
+    professionProfileInput, listContainer, addButton, modalLocation, nameProfileInput,
+    formProfile};

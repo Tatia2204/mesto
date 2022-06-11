@@ -1,19 +1,17 @@
-import {FormValidator} from './FormValidator.js';
-import {Card} from './Card.js';
-import {
-    initialCards, modalPictures, modalLocation,
-    listContainer, nameProfileInput, professionProfileInput, modalProfile, aboutProjectLink, addButton
-} from './utils.js';
-import {Section} from './Section.js';
-import {Popup} from "./Popup.js";
-import {PopupWithImage} from "./PopupWithImage.js";
-import {PopupWithForm} from "./PopupWithForm.js";
-import {UserInfo} from "./UserInfo.js";
+import {FormValidator} from '../components/FormValidator.js';
+import {Card} from '../components/Card.js';
+import {initialCards, modalPictures, modalLocation, listContainer, nameProfileInput,
+    professionProfileInput, modalProfile, aboutProjectLink, addButton} from '../components/utils.js';
+import {Section} from '../components/Section.js';
+import {Popup} from "../components/Popup.js";
+import {PopupWithImage} from "../components/PopupWithImage.js";
+import {PopupWithForm} from "../components/PopupWithForm.js";
+import {UserInfo} from "../components/UserInfo.js";
+import './index.css';
 
 const createCard = (data) => {
     const handleCardClick = (name, link) => {
         const popup = new PopupWithImage(name, link, modalPictures);
-
         popup.open();
     };
     const cardData = {data, handleCardClick};
@@ -30,19 +28,25 @@ const cardList = new Section({
     listContainer);
 cardList.renderItems();
 
+const closePictures = new Popup(modalPictures);
+closePictures.setEventListeners();
+
+const formLocation = new PopupWithForm({
+    popupSelector: modalLocation,
+    handleFormSubmit: (data) => {
+        cardList.addItem(createCard(data));
+        formLocation.close();
+    },
+});
+
+formLocation.setEventListeners();
+
+addButton.addEventListener('click', () => {
+    formLocation.open();
+});
+
 const closeLocation = new Popup(modalLocation);
 closeLocation.setEventListeners();
-
-// function handleAddCardFormSubmit(e) {
-//     e.preventDefault();
-//     const fieldValue = createCard({name: headingCardValue.value, link: linkCardValue.value});
-//     listContainer.prepend(fieldValue);
-//
-//     closeLocation.close();
-//     addCardLocation.reset();
-// }
-//
-// addCardLocation.addEventListener('submit', handleAddCardFormSubmit);
 
 function addInfoProfile({profileName, profileProfession}) {
     nameProfileInput.value = profileName;
@@ -53,12 +57,6 @@ const userInfo = new UserInfo({
     profileName: '.profile__name',
     profileProfession: '.profile__profession'
 })
-//
-// const openProfile = new Popup(modalProfile);
-// aboutProjectLink.addEventListener('click', () => openProfile.open());
-
-// const closeProfile = new Popup(modalProfile);
-// closeProfile.setEventListeners();
 
 const formProfile = new PopupWithForm({
     popupSelector: modalProfile,
@@ -67,7 +65,7 @@ const formProfile = new PopupWithForm({
             profileName: data.profileName,
             profileProfession: data.profileProfession
         });
-        // formProfile.close();
+        formProfile.close();
     },
 });
 
@@ -79,25 +77,8 @@ aboutProjectLink.addEventListener('click', () => {
         profileName: infoUser.profileName,
         profileProfession: infoUser.profileProfession
     });
-    formProfileValidator.enableValidation();
     formProfile.open();
-    formProfile._getInputValues();
 });
-
-// function handleProfileFormSubmit(e) {
-//     e.preventDefault();
-//     profileNameLink.textContent = nameProfileInput.value;
-//     profileProfessionLink.textContent = professionProfileInput.value;
-//     closeProfile.close();
-// }
-//
-// formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
-
-const closePictures = new Popup(modalPictures);
-closePictures.setEventListeners();
-
-const openLocation = new Popup(modalLocation);
-addButton.addEventListener('click', () => openLocation.open());
 
 const validationConfig = {
     formSelector: '.popup__content',
@@ -108,7 +89,7 @@ const validationConfig = {
 };
 
 const formProfileValidator = new FormValidator (validationConfig, modalProfile);
-
+formProfileValidator.enableValidation();
 
 const formLocationValidator = new FormValidator (validationConfig, modalLocation);
 formLocationValidator.enableValidation();

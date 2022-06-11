@@ -20,7 +20,7 @@ class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
 
-        this._element.querySelector('.element__mask-group').src = `${this._link}`;
+        this._element.querySelector('.element__mask-group').src = this._link;
         this._element.querySelector('.element__location').textContent = this._name;
         this._element.querySelector('.element__mask-group').alt = this._name;
 
