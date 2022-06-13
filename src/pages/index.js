@@ -1,21 +1,24 @@
 import {FormValidator} from '../components/FormValidator.js';
 import {Card} from '../components/Card.js';
-import {initialCards, modalPictures, modalLocation, listContainer, nameProfileInput,
-    professionProfileInput, modalProfile, aboutProjectLink, addButton} from '../components/utils.js';
+import {initialCards, modalPictures, modalLocation, listContainer,
+    modalProfile, aboutProjectLink, addButton, validationConfig} from '../utils/constants.js';
 import {Section} from '../components/Section.js';
-import {Popup} from "../components/Popup.js";
 import {PopupWithImage} from "../components/PopupWithImage.js";
 import {PopupWithForm} from "../components/PopupWithForm.js";
 import {UserInfo} from "../components/UserInfo.js";
 import './index.css';
 
+const popupPictures = new PopupWithImage(modalPictures);
+popupPictures.setEventListeners();
+
+//создание новой карточки
 const createCard = (data) => {
-    const handleCardClick = (name, link) => {
-        const popup = new PopupWithImage(name, link, modalPictures);
-        popup.open();
-    };
-    const cardData = {data, handleCardClick};
-    const card = new Card(cardData, '.template');
+    const card = new Card({
+        data: data,
+        handleCardClick: (name, link) => {
+            popupPictures.open({name, link});
+        }
+    }, '.template');
     const cardElement = card.generateCard();
 
     return cardElement;
@@ -24,13 +27,11 @@ const createCard = (data) => {
 const cardList = new Section({
         data: initialCards,
         renderer: (data) => {cardList.addItem(createCard(data));
-    }},
+        }},
     listContainer);
 cardList.renderItems();
 
-const closePictures = new Popup(modalPictures);
-closePictures.setEventListeners();
-
+//создание попапа карточки
 const formLocation = new PopupWithForm({
     popupSelector: modalLocation,
     handleFormSubmit: (data) => {
@@ -41,23 +42,12 @@ const formLocation = new PopupWithForm({
 
 formLocation.setEventListeners();
 
-addButton.addEventListener('click', () => {
-    formLocation.open();
-});
-
-const closeLocation = new Popup(modalLocation);
-closeLocation.setEventListeners();
-
-function addInfoProfile({profileName, profileProfession}) {
-    nameProfileInput.value = profileName;
-    professionProfileInput.value = profileProfession;
-}
-
 const userInfo = new UserInfo({
     profileName: '.profile__name',
     profileProfession: '.profile__profession'
 })
 
+//создание попапа профеля
 const formProfile = new PopupWithForm({
     popupSelector: modalProfile,
     handleFormSubmit: (data) => {
@@ -71,22 +61,17 @@ const formProfile = new PopupWithForm({
 
 formProfile.setEventListeners();
 
+//слушатель открытия попапа профеля и занесения информации в инпут
 aboutProjectLink.addEventListener('click', () => {
     const infoUser = userInfo.getUserInfo();
-    addInfoProfile({
-        profileName: infoUser.profileName,
-        profileProfession: infoUser.profileProfession
-    });
+    formProfile.setInputValues(infoUser);
     formProfile.open();
 });
 
-const validationConfig = {
-    formSelector: '.popup__content',
-    inputSelector: '.popup__element',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_type_disabled',
-    inputErrorClass: 'popup__element_type_error'
-};
+//слушатель кнопки открытия попапа, добавления новой карточки
+addButton.addEventListener('click', () => {
+    formLocation.open();
+});
 
 const formProfileValidator = new FormValidator (validationConfig, modalProfile);
 formProfileValidator.enableValidation();

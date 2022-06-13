@@ -39,6 +39,14 @@ const listContainer = document.querySelector('.elements');
 
 const modalLocation = document.querySelector('.popup_location');
 
+const validationConfig = {
+    formSelector: '.popup__content',
+    inputSelector: '.popup__element',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_type_disabled',
+    inputErrorClass: 'popup__element_type_error'
+};
+
 export {initialCards, modalPictures, aboutProjectLink, modalProfile,
     professionProfileInput, listContainer, addButton, modalLocation, nameProfileInput,
-    formProfile};
+    formProfile, validationConfig};

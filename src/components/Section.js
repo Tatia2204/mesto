@@ -2,11 +2,11 @@ class Section {
     constructor ({data, renderer}, cardSelector) {
         this._data = data;
         this._renderer = renderer;
-        this._cardSelector = cardSelector;
+        this._container = cardSelector;
     }
 
     addItem = (data) => {
-        this._cardSelector.prepend(data);
+        this._container.prepend(data);
     }
 
     renderItems = () => {
