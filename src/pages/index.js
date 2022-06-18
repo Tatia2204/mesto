@@ -7,6 +7,7 @@ import {PopupWithImage} from "../components/PopupWithImage.js";
 import {PopupWithForm} from "../components/PopupWithForm.js";
 import {UserInfo} from "../components/UserInfo.js";
 import './index.css';
+import {Api} from "../components/Api.js";
 
 const popupPictures = new PopupWithImage(modalPictures);
 popupPictures.setEventListeners();
@@ -44,18 +45,52 @@ formLocation.setEventListeners();
 
 const userInfo = new UserInfo({
     profileName: '.profile__name',
-    profileProfession: '.profile__profession'
+    profileProfession: '.profile__profession',
+    profileAvatar: '.profile__avatar'
 })
 
 //создание попапа профеля
 const formProfile = new PopupWithForm({
     popupSelector: modalProfile,
     handleFormSubmit: (data) => {
-        userInfo.setUserInfo({
-            profileName: data.profileName,
-            profileProfession: data.profileProfession
-        });
-        formProfile.close();
+        api.changeProfileInfo(data)
+            .then((data) => {
+                console.log(data);
+                userInfo.setUserInfo({
+                    profileName: data.profileName,
+                    profileProfession: data.profileProfession
+                });
+                formProfile.close();
+            })
+            .catch((err) => {
+                console.log(`Ошибка: ${err}`);
+            })
+    },
+});
+
+formProfile.setEventListeners();
+
+//создание попапа изменения аватара
+const formProfileAvatar = new PopupWithForm({
+    popupSelector: modalProfile,
+    handleFormSubmit: (data) => {
+        formProfile.loading(true);
+        api.changeProfileInfo(data)
+            .then((data) => {
+                console.log(data);
+                userInfo.setUserInfo({
+                    profileName: data.profileName,
+                    profileProfession: data.profileProfession,
+                    profileAvatar: data.profileAvatar
+                });
+                formProfile.close();
+            })
+            .catch((err) => {
+                console.log(`Ошибка: ${err}`);
+            })
+            .finally(() => {
+                formProfile.loading(false);
+            })
     },
 });
 
@@ -79,3 +114,51 @@ formProfileValidator.enableValidation();
 const formLocationValidator = new FormValidator (validationConfig, modalLocation);
 formLocationValidator.enableValidation();
 
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-43',
+    headers: {
+        authorization: 'ffa77eee-e2e0-4984-80c5-a3aae1c9cc92',
+        'Content-Type': 'application/json'
+    }
+});
+
+api.getProfileInfo ()
+    .then((data) => {
+        const profile = {
+            profileName: data.name,
+            profileProfession:  data.about,
+            profileAvatar: data.avatar
+        }
+        userInfo.setUserInfo(profile)
+    })
+    .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+    })
+
+// api.getInitialCards()
+//     .then((data) => {
+//         //создание новой карточки
+//         const createCard = (data) => {
+//             const card = new Card({
+//                 data: data,
+//                 handleCardClick: (name, link) => {
+//                     popupPictures.open({name, link});
+//                 }
+//             }, '.template');
+//             const cardElement = card.generateCard();
+//
+//             return cardElement;
+//         }
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+//
+// api.getProfile()
+//     .then((data) => {
+//
+//
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });

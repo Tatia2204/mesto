@@ -9,6 +9,7 @@ class PopupWithForm extends Popup {
         this._inputList = this._popup.querySelectorAll('.popup__element');
     }
 
+    //сбор данных всех полей
     _getInputValues() {
         this._fieldValue = {};
         this._inputList.forEach(input => {
@@ -23,7 +24,9 @@ class PopupWithForm extends Popup {
 
         this._popupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            this.handleFormSubmit(this._getInputValues());
+            const form = this._getInputValues();
+            console.log(form);
+            this.handleFormSubmit(form);
         });
     }
 
@@ -34,6 +37,7 @@ class PopupWithForm extends Popup {
     }
 
     close() {
+        console.log('вызов');
         super.close();
         this._popupForm.reset();
     }
