@@ -8,12 +8,12 @@ import {PopupWithForm} from "../components/PopupWithForm.js";
 import {UserInfo} from "../components/UserInfo.js";
 import './index.css';
 import {Api} from "../components/Api.js";
-import {PopupWithDelete} from "../components/PopupWithDelete.js";
+import {PopupWithConfirmation} from "../components/PopupWithConfirmation.js";
 
 const popupPictures = new PopupWithImage(modalPictures);
 popupPictures.setEventListeners();
 
-const popupDelete = new PopupWithDelete(modalDeleteCard);
+const popupDelete = new PopupWithConfirmation(modalDeleteCard);
 popupDelete.setEventListeners();
 
 const userInfo = new UserInfo({
