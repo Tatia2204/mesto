@@ -13,7 +13,10 @@
 
 <main class="content">
     <section class="profile">
-        <img src="<%=require('./images/Avatar2.jpg')%>" alt="фото" class="profile__avatar">
+        <div class="profile__container">
+            <button aria-label="Поменять аватар" class="profile__avatar-button"></button>
+            <img src="<%=require('./images/Avatar2.jpg')%>" alt="фото" class="profile__avatar">
+        </div>
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив</h1>
             <button aria-label="Перейти к изменению профеля" class="link profile__info-edit" type="button"></button>
@@ -103,13 +106,46 @@
     </div>
 </div>
 
+<div class="popup popup_delete">
+    <div class="popup__form">
+        <button aria-label="Закрыть окно" class="link popup__close" type="button"></button>
+        <form name="formLocation" novalidate class="popup__content">
+            <h3 class="popup__title popup__title_delete">Вы уверены?</h3>
+            <button class="popup__save" type="submit">Да</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="popup popup_avatar">
+    <div class="popup__form">
+        <button aria-label="Закрыть окно" class="link popup__close popup__close_avatar" type="button"></button>
+        <form name="formAvatar" novalidate class="popup__content popup__content_avatar">
+            <h3 class="popup__title">Обновить аватар</h3>
+            <lebel class="popup__indent">
+                <input type="url"
+                       id="link-avatar"
+                       required
+                       placeholder="Ссылка на картинку"
+                       name="link"
+                       class="popup__element popup__element_avatar popup__element_add_link">
+                <span class="popup__error" id="link-avatar-error"></span>
+            </lebel>
+            <button class="popup__save popup__save_avatar" type="submit">Сохранить</button>
+        </form>
+    </div>
+</div>
+
 <template class="template">
     <article class="element">
         <button aria-label="Удалить карточку" class="link element__remove" type="button"></button>
         <img src=" " alt=" " class="element__mask-group">
         <div class="element__group">
             <h2 class="element__location"></h2>
-            <button aria-label="Отметить фото" class="element__like" type="button"></button>
+            <div class="element__like-group">
+                <button aria-label="Отметить фото" class="element__like" type="button"></button>
+                <p class="element__likes">6</p>
+            </div>
         </div>
     </article>
 </template>

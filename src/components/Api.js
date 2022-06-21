@@ -4,19 +4,27 @@ class Api {
         this._headers = options. headers;
     }
 
-    // getInitialCards() {
-    //     return fetch('https://mesto.nomoreparties.co/v1/cohort-43/cards', {
-    //         headers: {
-    //             authorization: 'ffa77eee-e2e0-4984-80c5-a3aae1c9cc92'
-    //         }
-    //     })
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 return res.json();
-    //             }
-    //             return Promise.reject(`Ошибка: ${res.status}`);
-    //         });
-    // }
+    //загрузка карточек
+    getInitialCards() {
+        return fetch(`${this._url}/cards`, {
+            method: 'GET',
+            headers: this._headers
+        })
+            .then(this._checkRequest);
+    }
+
+    //добавление новой карточки
+    addNewCard(data) {
+        return fetch(`${this._url}/cards`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link
+            })
+        })
+            .then(this._checkRequest);
+    }
 
     //проверка ответа
     _checkRequest(res) {
@@ -56,24 +64,38 @@ class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: data.profileAvatar
+                avatar: data.link
             })
         })
             .then(this._checkRequest);
     }
 
+    //добавить лайк
+    addLike(_id) {
+        return fetch(`${this._url}/cards/${_id}/likes`, {
+            method: 'PUT',
+            headers: this._headers
+        })
+            .then(this._checkRequest);
     }
 
+    //удалить лайк
+    deleteLike(_id) {
+        return fetch(`${this._url}/cards/${_id}/likes`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(this._checkRequest);
+    }
 
-
-// fetch('https://mesto.nomoreparties.co/v1/cohort-43/cards', {
-//     headers: {
-//         authorization: 'ffa77eee-e2e0-4984-80c5-a3aae1c9cc92'
-//     }
-// })
-//     .then(res => res.json())
-//     .then((result) => {
-//         console.log(result);
-//     }
+    //удалить карточки
+    deleteCard(_id) {
+        return fetch(`${this._url}/cards/${_id}`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(this._checkRequest);
+    }
+    }
 
 export {Api};

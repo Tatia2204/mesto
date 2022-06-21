@@ -21,7 +21,7 @@ class UserInfo {
         this._profileId = profileId;
     }
 
-    getUserId() {
+    getProfileId = () => {
         return this._profileId;
     }
 }

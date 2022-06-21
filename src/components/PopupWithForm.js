@@ -7,6 +7,7 @@ class PopupWithForm extends Popup {
         this.handleFormSubmit = handleFormSubmit;
         this._popupForm = this._popup.querySelector('.popup__content');
         this._inputList = this._popup.querySelectorAll('.popup__element');
+        this._saveButten = this._popup.querySelector('.popup__save');
     }
 
     //сбор данных всех полей
@@ -21,11 +22,9 @@ class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-
         this._popupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const form = this._getInputValues();
-            console.log(form);
             this.handleFormSubmit(form);
         });
     }
@@ -37,9 +36,16 @@ class PopupWithForm extends Popup {
     }
 
     close() {
-        console.log('вызов');
         super.close();
         this._popupForm.reset();
+    }
+
+    download(isDownload){
+        if (isDownload) {
+            this._saveButten.textContent = "Сохранение...";
+        } else {
+            this._saveButten.textContent = "Сохранить";
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 class Section {
-    constructor ({data, renderer}, cardSelector) {
-        this._data = data;
+    constructor ({renderer}, cardSelector) {
+
         this._renderer = renderer;
         this._container = cardSelector;
     }
@@ -9,9 +9,10 @@ class Section {
         this._container.prepend(data);
     }
 
-    renderItems = () => {
-        this._data.forEach((data) => {
-            this._renderer(data);
+    //отрисовка карточек
+    renderItems = (items) => {
+        items.forEach((item) => {
+            this._renderer(item);
         });
     }
 }
