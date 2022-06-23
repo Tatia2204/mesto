@@ -22,6 +22,7 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__element/popup__element.css);
 @import url(../blocks/popup/__element/_type_error/popup__element_type_error.css);
+@import url(../blocks/popup/__element/_error_visible/popup__element_error_visible.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__group/popup__group.css);
 @import url(../blocks/popup/__indent/popup__indent.css);

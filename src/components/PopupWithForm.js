@@ -24,8 +24,8 @@ class PopupWithForm extends Popup {
         super.setEventListeners();
         this._popupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const form = this._getInputValues();
-            this.handleFormSubmit(form);
+            const formValues = this._getInputValues();
+            this.handleFormSubmit(formValues);
         });
     }
 
@@ -40,7 +40,7 @@ class PopupWithForm extends Popup {
         this._popupForm.reset();
     }
 
-    download(isDownload){
+    renderLoading(isDownload){
         if (isDownload) {
             this._saveButten.textContent = "Сохранение...";
         } else {

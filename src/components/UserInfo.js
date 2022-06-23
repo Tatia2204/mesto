@@ -15,10 +15,15 @@ class UserInfo {
     }
 
     setUserInfo({profileName, profileProfession, profileAvatar, profileId}) {
-        this._profileName.textContent = profileName;
-        this._profileProfession.textContent = profileProfession;
-        this._profileAvatar.src = profileAvatar;
-        this._profileId = profileId;
+        if (profileName) {
+            this._profileName.textContent = profileName;
+        } if (profileProfession) {
+            this._profileProfession.textContent = profileProfession;
+        } if (profileAvatar) {
+            this._profileAvatar.src = profileAvatar;
+        } if (profileId) {
+            this._profileId = profileId;
+        }
     }
 
     getProfileId = () => {

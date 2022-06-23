@@ -2,6 +2,8 @@ class Popup {
     constructor(popupSelector) {
         this._popup = popupSelector;
         this._popupClose = this._popup.querySelector('.popup__close');
+        this._numberEscape = 27;
+        this._inputList = this._popup.querySelectorAll('.popup__element');
     }
 
     open() {
@@ -15,8 +17,6 @@ class Popup {
     }
 
     _handleEscClose = (event) => {
-        this._numberEscape = 27;
-
         if (event.keyCode === this._numberEscape) {
             this.close();
         }
@@ -30,7 +30,7 @@ class Popup {
 
     setEventListeners() {
         this._popupClose.addEventListener('click', () => {
-            this.close();
+            this.close(this._inputList);
         });
 
         this._popup.addEventListener('click', this._handleOverlayClose);

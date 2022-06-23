@@ -15,6 +15,10 @@ class Section {
             this._renderer(item);
         });
     }
+
+    addCard = (data) => {
+        this._container.append(data);
+    }
 }
 
 export {Section};

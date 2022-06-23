@@ -22,7 +22,8 @@ const validationConfig = {
     inputSelector: '.popup__element',
     submitButtonSelector: '.popup__save',
     inactiveButtonClass: 'popup__save_type_disabled',
-    inputErrorClass: 'popup__element_type_error'
+    inputErrorClass: 'popup__element_type_error',
+    errorClass: 'popup__element_error_visible'
 };
 
 export {modalPictures, aboutProjectLink, modalProfile, avatarButton,
