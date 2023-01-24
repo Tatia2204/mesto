@@ -39,3 +39,25 @@
 **GitHub Pages**
 
 * [Ссылка на GitHub Pages](https://tatia2204.github.io/mesto/)
+
+### Установка и запуск приложения:
+
+**Клонировать репозиторий:**
+git clone https://github.com/Tatia2204/mesto-react.git
+
+**Установить зависимости:**
+npm install
+
+**Собрать проект:**
+npm run build
+
+**Запустить проект:**
+npm run dev
+
+### Языки:
+
+* JavaScript
+
+### Библиотеки:
+
+* ReactJS
