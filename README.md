@@ -15,19 +15,19 @@
 ### Технологии:
 * HTML5;
 * CSS3:
-* Flexbox;
-* Grid Layout;
-* Positioning;
-* Adaptive UI;
-* Media Queries;
+  * Flexbox;
+  * Grid Layout;
+  * Positioning;
+  * Adaptive UI;
+  * Media Queries;
 * Методология БЭМ;
 * Фйловая структура Nested БЭМ;
 * JavaScript:
-* Стиль CamelCase;
-* Объектно-ориентированное программирование;
-* Промисы (Promise);
-* Асинхронность и оптимизация;
-* API (Application Programming Interface);
+  * Стиль CamelCase;
+  * Объектно-ориентированное программирование;
+  * Промисы (Promise);
+  * Асинхронность и оптимизация;
+  * API (Application Programming Interface);
 * Webpack.
 
 ### Макеты Проектной работы в Figma:
