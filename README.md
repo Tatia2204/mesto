@@ -58,6 +58,3 @@ npm run dev
 
 * JavaScript
 
-### Библиотеки:
-
-* ReactJS
